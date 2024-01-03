@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import Nav from '@/components/Nav.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <Nav />
+  <RouterView />
 </template>
