@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface NavLink {
-  text: string
-  link: string
+  text: string;
+  link: string;
 }
 
 const navLinks: NavLink[] = [
@@ -17,7 +17,7 @@ const navLinks: NavLink[] = [
     text: '我的收藏',
     link: '/collects'
   }
-]
+];
 </script>
 <template>
   <header>
