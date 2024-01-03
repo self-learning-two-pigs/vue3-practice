@@ -11,7 +11,7 @@ onMounted(() => {
   setTimeout(() => {
     posts.value = POSTS;
     isLoading.value = false;
-  });
+  }, 1000);
 });
 </script>
 <template>
