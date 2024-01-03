@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import type { PostModel } from '@/components/post.model';
+import { useRouter } from 'vue-router';
 
 interface PostProps {
   post: PostModel;
 }
 defineProps<PostProps>();
+
+const router = useRouter();
+const goToPostDetailPage = (id: string) => {
+  router.push(`/posts/${id}`);
+};
 </script>
 <template>
-  <div class="post">
+  <div class="post" @click="goToPostDetailPage(post.id)">
     <img :src="post.img" alt="post image" />
     <div class="content">
       <div class="title">{{ post.title }}</div>
