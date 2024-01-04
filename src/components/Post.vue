@@ -3,11 +3,12 @@ import type { PostModel } from '@/components/post.model';
 import { useRouter } from 'vue-router';
 import PostAction from '@/components/PostAction.vue';
 import { usePosts } from '@/stores/posts';
+import { useDateFormat } from '@/components/useDateFormat';
 
 interface PostProps {
   post: PostModel;
 }
-defineProps<PostProps>();
+const { post } = defineProps<PostProps>();
 
 const router = useRouter();
 const goToPostDetailPage = (id: string) => {
@@ -18,6 +19,8 @@ const { toggleCollected } = usePosts();
 const toggleCollect = (id: string, collect: boolean) => {
   toggleCollected(id, collect);
 };
+
+const time = useDateFormat(post.createdAt);
 </script>
 <template>
   <div class="post" @click="goToPostDetailPage(post.id)">
@@ -29,7 +32,7 @@ const toggleCollect = (id: string, collect: boolean) => {
       </div>
       <div class="other">
         <span class="name">{{ post.createdByUserName }}</span>
-        <span class="time">{{ post.createdAt }}</span>
+        <span class="time">{{ time }}</span>
       </div>
     </div>
   </div>
