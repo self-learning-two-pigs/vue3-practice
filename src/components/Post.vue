@@ -2,6 +2,7 @@
 import type { PostModel } from '@/components/post.model';
 import { useRouter } from 'vue-router';
 import PostAction from '@/components/PostAction.vue';
+import { usePosts } from '@/stores/posts';
 
 interface PostProps {
   post: PostModel;
@@ -12,6 +13,11 @@ const router = useRouter();
 const goToPostDetailPage = (id: string) => {
   router.push(`/posts/${id}`);
 };
+
+const { toggleCollected } = usePosts();
+const toggleCollect = (id: string, collect: boolean) => {
+  toggleCollected(id, collect);
+};
 </script>
 <template>
   <div class="post" @click="goToPostDetailPage(post.id)">
@@ -19,7 +25,7 @@ const goToPostDetailPage = (id: string) => {
     <div class="content">
       <div class="other operation">
         <div class="title">{{ post.title }}</div>
-        <PostAction :collected="post.collected" />
+        <PostAction :collected="post.collected" @collect="toggleCollect(post.id, $event)" />
       </div>
       <div class="other">
         <span class="name">{{ post.createdByUserName }}</span>
@@ -40,6 +46,7 @@ const goToPostDetailPage = (id: string) => {
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 16px;
+  user-select: none;
 }
 
 .post + .post {

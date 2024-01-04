@@ -23,7 +23,7 @@ const navLinks: NavLink[] = [
   <header>
     <h2>贴吧</h2>
     <div class="links">
-      <RouterLink class="" v-for="navLink of navLinks" :to="navLink.link">{{
+      <RouterLink class="" v-for="navLink of navLinks" :to="navLink.link" :key="navLink.link">{{
         navLink.text
       }}</RouterLink>
     </div>

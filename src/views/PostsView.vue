@@ -1,22 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue';
 import Post from '@/components/Post.vue';
-import { POSTS } from '@/components/constants.ts';
+import { usePosts } from '@/stores/posts';
 
-const posts = ref([]);
-const isLoading = ref(false);
-
-onMounted(() => {
-  isLoading.value = true;
-  setTimeout(() => {
-    posts.value = POSTS;
-    isLoading.value = false;
-  }, 1000);
-});
+const { posts } = usePosts();
 </script>
 <template>
-  <div v-if="isLoading">loading</div>
+  <div v-if="!posts.length">empty</div>
   <div v-else>
-    <Post v-for="post of posts" :post="post" />
+    <Post v-for="post of posts" :post="post" :key="post.id" />
   </div>
 </template>

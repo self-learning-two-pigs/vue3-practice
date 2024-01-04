@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import type { PostModel } from '@/components/post.model';
-import { onMounted, ref } from 'vue';
-import { POSTS } from '@/components/constants';
 import { useRoute } from 'vue-router';
+import { usePosts } from '@/stores/posts';
+import PostAction from '@/components/PostAction.vue';
 const {
   params: { id }
 } = useRoute();
-const post = ref<PostModel>();
-onMounted(() => {
-  post.value = POSTS.find((p) => p.id === id);
-});
+const { getById } = usePosts();
+const post = getById(id);
+
+const { toggleCollected } = usePosts();
+const toggleCollect = (id: string, collect: boolean) => {
+  toggleCollected(id, collect);
+};
 </script>
 <template>
   <div v-if="post" class="post-detail">
@@ -17,6 +19,7 @@ onMounted(() => {
     <h3>{{ post.title }}</h3>
     <div class="name">{{ post.createdByUserName }}</div>
     <div class="time">{{ post.createdAt }}</div>
+    <PostAction :collected="post.collected" @collect="toggleCollect(post.id, $event)" />
     <img :src="post.img" alt="post image" />
     <div>{{ post.content }}</div>
   </div>

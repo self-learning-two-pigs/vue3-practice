@@ -13,6 +13,12 @@ defineProps<PostActionProps>();
 </script>
 
 <template>
-  <Icon v-if="collected" name="collect" @click.stop="$emit('collect', false)" />
-  <Icon v-else name="unCollect" @click.stop="$emit('collect', true)" />
+  <Icon class="icon" v-if="collected" name="unCollect" @click.stop="$emit('collect', false)" />
+  <Icon class="icon" v-else name="collect" @click.stop="$emit('collect', true)" />
 </template>
+
+<style scoped>
+.icon {
+  cursor: pointer;
+}
+</style>

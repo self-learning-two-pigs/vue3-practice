@@ -20,4 +20,9 @@ withDefaults(defineProps<IconProps>(), {
 .primary {
   color: var(--dark-primary);
 }
+
+svg:hover {
+  background: var(--primary);
+  border-radius: 2px;
+}
 </style>
