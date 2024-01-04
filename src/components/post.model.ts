@@ -6,4 +6,5 @@ export interface PostModel {
   createdByUserId: string;
   createdByUserName: string;
   img: string;
+  collected: boolean;
 }

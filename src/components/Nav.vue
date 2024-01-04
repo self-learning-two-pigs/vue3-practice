@@ -38,17 +38,17 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 60px;
-  background: #c9eed9;
+  background: var(--primary);
 }
 
 .links {
   a {
     margin-right: 30px;
     text-decoration: none;
-    color: #000;
+    color: var(--text-primary);
 
     &.router-link-exact-active {
-      color: #2ebaee;
+      color: var(--second-primary);
     }
   }
 }

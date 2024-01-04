@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PostModel } from '@/components/post.model';
 import { useRouter } from 'vue-router';
+import PostAction from '@/components/PostAction.vue';
 
 interface PostProps {
   post: PostModel;
@@ -16,7 +17,10 @@ const goToPostDetailPage = (id: string) => {
   <div class="post" @click="goToPostDetailPage(post.id)">
     <img :src="post.img" alt="post image" />
     <div class="content">
-      <div class="title">{{ post.title }}</div>
+      <div class="other operation">
+        <div class="title">{{ post.title }}</div>
+        <PostAction :collected="post.collected" />
+      </div>
       <div class="other">
         <span class="name">{{ post.createdByUserName }}</span>
         <span class="time">{{ post.createdAt }}</span>
@@ -29,7 +33,7 @@ const goToPostDetailPage = (id: string) => {
 .post {
   width: 300px;
   height: 300px;
-  border: 1px solid #1db6aa;
+  border: 1px solid var(--dark-primary);
   border-radius: 10px;
   display: inline-flex;
   flex-direction: column;
@@ -54,11 +58,15 @@ img {
 
 .title {
   font-weight: 700;
+}
+
+.operation {
   margin-bottom: 24px;
 }
 
 .other {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 </style>
