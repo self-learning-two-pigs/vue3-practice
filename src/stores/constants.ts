@@ -1,4 +1,5 @@
-import type { PostModel } from '@/components/post.model';
+import type { PostModel } from '@/model/post.model';
+import type { User } from '@/model/user';
 
 export const POSTS: PostModel[] = [
   {
@@ -30,5 +31,16 @@ export const POSTS: PostModel[] = [
     createdByUserName: 'Amy',
     collected: false,
     img: 'https://img.cc0.cn/pixabay/2019102223345863811.jpg%21860.jpg'
+  }
+];
+
+export const USERS: User[] = [
+  {
+    id: 'userId1',
+    name: 'Amy'
+  },
+  {
+    id: 'userId2',
+    name: 'May'
   }
 ];

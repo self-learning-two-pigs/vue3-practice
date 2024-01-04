@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Post from '@/components/Post.vue';
-import type { PostModel } from '@/components/post.model';
+import type { PostModel } from '@/model/post.model';
 
 interface PostsProps {
   posts: PostModel[];

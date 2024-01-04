@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useUser } from '@/stores/user';
+
 interface NavLink {
   text: string;
   link: string;
@@ -18,6 +20,8 @@ const navLinks: NavLink[] = [
     link: '/collects'
   }
 ];
+
+const { user } = useUser();
 </script>
 <template>
   <header>
@@ -27,7 +31,7 @@ const navLinks: NavLink[] = [
         navLink.text
       }}</RouterLink>
     </div>
-    <div>用户信息</div>
+    <div>{{ user?.name }}</div>
   </header>
 </template>
 

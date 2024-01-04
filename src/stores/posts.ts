@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import type { PostModel } from '@/components/post.model';
+import type { PostModel } from '@/model/post.model';
 import { POSTS } from '@/stores/constants';
+import { useUser } from '@/stores/user';
 
 export const usePosts = defineStore('posts', () => {
+  const { user } = useUser();
   const posts = ref<PostModel[]>(POSTS);
   const getById = (id: string) => posts.value.find((p) => p.id === id);
 
@@ -27,7 +29,7 @@ export const usePosts = defineStore('posts', () => {
   };
 
   const collects = computed(() => posts.value.filter((p) => p.collected));
-  const myPosts = computed(() => posts.value.filter((p) => p.createdByUserId === 'userId1'));
+  const myPosts = computed(() => posts.value.filter((p) => p.createdByUserId === user.id));
 
   return { posts, toggleCollected, init, getById, collects, myPosts };
 });

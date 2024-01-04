@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostModel } from '@/components/post.model';
+import type { PostModel } from '@/model/post.model';
 import { useRouter } from 'vue-router';
 import PostAction from '@/components/PostAction.vue';
 import { usePosts } from '@/stores/posts';

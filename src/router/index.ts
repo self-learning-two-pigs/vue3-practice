@@ -24,6 +24,10 @@ const router = createRouter({
           component: () => import('../views/MyCollects.vue')
         }
       ]
+    },
+    {
+      path: '/login',
+      component: () => import('../views/Login.vue')
     }
   ]
 });
