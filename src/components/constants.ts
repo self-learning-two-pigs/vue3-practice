@@ -5,7 +5,7 @@ export const POSTS: PostModel[] = [
     id: 'postId1',
     title: 'vue入门',
     content: '参考官网',
-    img: 'https://images.lifestyleasia.com/wp-content/uploads/sites/7/2022/05/23202533/sakura.jpg',
+    img: 'https://img0.baidu.com/it/u=1538294622,2346929164&fm=253&fmt=auto?w=1422&h=800',
     createdAt: '2023-01-03T08:08:45.012Z',
     createdByUserId: 'userId1',
     createdByUserName: 'Amy'
@@ -17,7 +17,7 @@ export const POSTS: PostModel[] = [
     createdAt: '2023-05-03T08:08:45.012Z',
     createdByUserId: 'userId2',
     createdByUserName: 'May',
-    img: 'https://images.lifestyleasia.com/wp-content/uploads/sites/7/2022/05/23202815/lotus.jpg'
+    img: 'https://img2.baidu.com/it/u=409925225,786542423&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500'
   },
   {
     id: 'postId3',
@@ -26,6 +26,6 @@ export const POSTS: PostModel[] = [
     createdAt: '2023-05-03T08:08:45.012Z',
     createdByUserId: 'userId1',
     createdByUserName: 'Amy',
-    img: 'https://wallpapers.com/images/hd/flower-pictures-sxxwanix5l9ty292.jpg'
+    img: 'https://img.cc0.cn/pixabay/2019102223345863811.jpg%21860.jpg'
   }
 ];
