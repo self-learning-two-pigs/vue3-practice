@@ -14,22 +14,10 @@ export const usePosts = defineStore('posts', () => {
     if (post) {
       post.collected = collected;
     }
-    // posts.value = posts.value.map((p) =>
-    //   p.id === id
-    //     ? {
-    //         ...p,
-    //         collected
-    //       }
-    //     : p
-    // );
-  };
-
-  const init = (list: PostModel[]) => {
-    posts.value = list;
   };
 
   const collects = computed(() => posts.value.filter((p) => p.collected));
-  const myPosts = computed(() => posts.value.filter((p) => p.createdByUserId === user.id));
+  const myPosts = computed(() => posts.value.filter((p) => p.createdByUserId === user?.id));
 
-  return { posts, toggleCollected, init, getById, collects, myPosts };
+  return { posts, toggleCollected, getById, collects, myPosts };
 });
