@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUser } from '@/stores/user';
+import UserDropdown from '@/components/user/UserDropdown.vue';
 
 interface NavLink {
   text: string;
@@ -31,7 +32,12 @@ const { user } = useUser();
         navLink.text
       }}</RouterLink>
     </div>
-    <div>{{ user?.name }}</div>
+    <div class="username">
+      {{ user?.name }}
+      <div class="menu">
+        <UserDropdown />
+      </div>
+    </div>
   </header>
 </template>
 
@@ -54,6 +60,23 @@ header {
     &.router-link-exact-active {
       color: var(--second-primary);
     }
+  }
+}
+
+.username {
+  position: relative;
+  cursor: pointer;
+
+  .menu {
+    position: absolute;
+    left: -30px;
+    display: none;
+  }
+}
+
+.username:hover {
+  .menu {
+    display: block;
   }
 }
 </style>

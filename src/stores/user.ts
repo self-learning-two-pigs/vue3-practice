@@ -5,7 +5,7 @@ import type { User } from '@/model/user';
 export const useUser = defineStore('user', () => {
   const user = ref<User>();
 
-  const setUser = (value: User) => (user.value = value);
+  const setUser = (value: User | undefined) => (user.value = value);
 
   const isLogin = computed(() => !!user.value);
 
