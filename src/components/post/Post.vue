@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { PostModel } from '@/model/post.model';
 import { useRouter } from 'vue-router';
-import PostAction from '@/components/PostAction.vue';
+import PostAction from '@/components/post/PostAction.vue';
 import { usePosts } from '@/stores/posts';
-import { useDateFormat } from '@/components/useDateFormat';
+import { useDateFormat } from '@/hooks/useDateFormat';
 
 interface PostProps {
   post: PostModel;

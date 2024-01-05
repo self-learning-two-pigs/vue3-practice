@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconMaps } from '@/components/iconMaps';
+import { IconMaps } from '@/components/icons/iconMaps';
 
 interface IconProps {
   width?: number;

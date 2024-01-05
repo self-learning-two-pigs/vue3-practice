@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { usePosts } from '@/stores/posts';
-import PostAction from '@/components/PostAction.vue';
+import PostAction from '@/components/post/PostAction.vue';
 const {
   params: { id }
 } = useRoute();
