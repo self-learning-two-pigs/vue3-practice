@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useUser } from '@/stores/user';
 import UserDropdown from '@/components/user/UserDropdown.vue';
+import { ref } from 'vue';
 
 interface NavLink {
   text: string;
@@ -23,21 +24,22 @@ const navLinks: NavLink[] = [
 ];
 
 const { user } = useUser();
+
+const open = ref(false);
+const toggleOpen = () => {
+  open.value = !open.value;
+};
 </script>
 <template>
   <header>
     <h2>贴吧</h2>
     <div class="links">
-      <RouterLink class="" v-for="navLink of navLinks" :to="navLink.link" :key="navLink.link">{{
+      <RouterLink v-for="navLink of navLinks" :to="navLink.link" :key="navLink.link">{{
         navLink.text
       }}</RouterLink>
     </div>
-    <div class="username">
-      {{ user?.name }}
-      <div class="menu">
-        <UserDropdown />
-      </div>
-    </div>
+    <span class="username" @click="toggleOpen">{{ user?.name }}</span>
+    <UserDropdown :open="open" />
   </header>
 </template>
 
@@ -64,19 +66,7 @@ header {
 }
 
 .username {
-  position: relative;
   cursor: pointer;
-
-  .menu {
-    position: absolute;
-    left: -30px;
-    display: none;
-  }
-}
-
-.username:hover {
-  .menu {
-    display: block;
-  }
+  user-select: none;
 }
 </style>

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useUser } from '@/stores/user';
 import { useRouter } from 'vue-router';
+import Modal from '@/components/Modal.vue';
+
+interface UserDropdownProps {
+  open: boolean;
+}
+defineProps<UserDropdownProps>();
 
 const { setUser } = useUser();
 const router = useRouter();
@@ -15,10 +21,16 @@ const goToMyProfile = () => {
 </script>
 
 <template>
-  <ul>
-    <li @click="goToMyProfile">我的</li>
-    <li @click="logout">登出</li>
-  </ul>
+  <teleport to="body">
+    <Modal :open="open">
+      <template #body>
+        <ul>
+          <li @click="goToMyProfile">我的</li>
+          <li @click="logout">登出</li>
+        </ul>
+      </template>
+    </Modal>
+  </teleport>
 </template>
 
 <style scoped>
@@ -31,6 +43,7 @@ ul {
   list-style: none;
   border-radius: 4px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 li {
