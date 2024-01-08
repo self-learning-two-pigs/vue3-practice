@@ -11,6 +11,20 @@ defineProps<PostsProps>();
 <template>
   <div v-if="!posts.length">empty</div>
   <div v-else>
-    <Post v-for="post of posts" :post="post" :key="post.id" />
+    <TransitionGroup name="list">
+      <Post v-for="post of posts" :post="post" :key="post.id" />
+    </TransitionGroup>
   </div>
 </template>
+
+<style scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
